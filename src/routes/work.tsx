@@ -26,7 +26,7 @@ function WorkPage() {
     <>
       <section className="site-container py-16 md:py-24">
         <p className="eyebrow mb-8">Selected work</p>
-        <h1 className="display-heading max-w-5xl text-balance text-6xl sm:text-7xl md:text-8xl">Infrastructure for ideas with <span className="text-primary italic">consequence.</span></h1>
+        <h1 className="display-heading max-w-5xl text-balance text-5xl sm:text-7xl md:text-8xl">Infrastructure for ideas with <span className="text-primary italic">consequence.</span></h1>
         <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">Physical and digital systems designed to outlast the moment—and expand what institutions can do next.</p>
       </section>
 
