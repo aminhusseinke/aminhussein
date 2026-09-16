@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:-translate-y-0.5 hover:brightness-95",
+        default: "bg-primary text-primary-foreground shadow-[0_12px_35px_-20px_color-mix(in_oklab,var(--primary)_70%,transparent)] hover:-translate-y-1 hover:shadow-[0_18px_45px_-18px_color-mix(in_oklab,var(--primary)_75%,transparent)] hover:brightness-95 active:translate-y-0",
         destructive: "bg-destructive text-destructive-foreground hover:brightness-95",
-        outline: "border border-input bg-background hover:border-foreground",
+        outline: "border border-input bg-background hover:-translate-y-0.5 hover:border-emerald hover:shadow-[0_14px_40px_-28px_color-mix(in_oklab,var(--emerald)_65%,transparent)]",
         secondary: "bg-secondary text-secondary-foreground hover:brightness-95",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-primary underline-offset-4 hover:underline",

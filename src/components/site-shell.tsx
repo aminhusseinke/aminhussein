@@ -36,7 +36,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </nav>
         </div>
       </header>
-      <main>{children}</main>
+      <main key={pathname} className="route-enter">{children}</main>
       <footer className="footer-gradient text-footer-foreground">
         <div className="site-container py-12 md:py-16">
           <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
