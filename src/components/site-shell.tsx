@@ -6,7 +6,6 @@ const links = [
   { to: "/" as const, label: "Home" },
   { to: "/about" as const, label: "About" },
   { to: "/work" as const, label: "Work" },
-  { to: "/resources" as const, label: "Resources" },
 ];
 
 export function SiteShell({ children }: { children: ReactNode }) {
