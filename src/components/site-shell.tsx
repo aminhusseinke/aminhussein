@@ -1,11 +1,17 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, MapPin, Music2 } from "lucide-react";
 import type { ReactNode } from "react";
 
 const links = [
   { to: "/" as const, label: "Home" },
   { to: "/about" as const, label: "About" },
   { to: "/work" as const, label: "Work" },
+];
+
+const socialLinks = [
+  { href: "https://www.linkedin.com/in/hassan-amin-hussein-", label: "LinkedIn", icon: Linkedin },
+  { href: "https://www.instagram.com/aminhussei_n", label: "Instagram", icon: Instagram },
+  { href: "https://www.tiktok.com/@aminhussei_n", label: "TikTok", icon: Music2 },
 ];
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -38,7 +44,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <main key={pathname} className="route-enter">{children}</main>
       <footer className="footer-gradient text-footer-foreground">
         <div className="site-container py-12 md:py-16">
-          <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
+          <div className="grid gap-12 md:grid-cols-[1fr_auto_auto] md:items-end md:gap-16">
             <div>
               <p className="mb-6 text-xs uppercase tracking-[0.18em] text-footer-muted">Navigate</p>
               <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-7 gap-y-3">
@@ -46,6 +52,24 @@ export function SiteShell({ children }: { children: ReactNode }) {
                   <Link key={link.to} to={link.to} className="footer-link">
                     {link.label}
                   </Link>
+                ))}
+              </nav>
+            </div>
+            <div>
+              <p className="mb-6 text-xs uppercase tracking-[0.18em] text-footer-muted">Connect</p>
+              <nav aria-label="Social media" className="flex flex-wrap gap-4">
+                {socialLinks.map(({ href, label, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="social-link"
+                    aria-label={`${label} (opens in a new tab)`}
+                  >
+                    <Icon aria-hidden="true" className="size-4" />
+                    <span>{label}</span>
+                  </a>
                 ))}
               </nav>
             </div>

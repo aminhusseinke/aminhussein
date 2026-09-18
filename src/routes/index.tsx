@@ -3,6 +3,7 @@ import { ArrowDownRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
 import systemsImage from "@/assets/operational-systems.jpg";
+import profileImage from "@/assets/amin-profile-cutout.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,30 +22,48 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      <section className="site-container flex min-h-[calc(100svh-5rem)] flex-col justify-between py-12 md:min-h-[calc(100svh-6rem)] md:py-20">
-        <Reveal className="flex items-center justify-between">
-          <p className="eyebrow">Strategy · Systems · Scale</p>
-          <p className="hidden text-xs text-muted-foreground sm:block">Nairobi / Global</p>
-        </Reveal>
-        <Reveal variant="clip" className="max-w-6xl py-16 md:py-24" delay={100}>
-          <h1 className="display-heading text-balance text-[3.4rem] sm:text-7xl md:text-8xl lg:text-[7.4rem]">
-            I build the <span className="emerald-text italic">systems</span> that make ambitious ideas inevitable.
-          </h1>
-        </Reveal>
-        <Reveal className="grid gap-8 border-t pt-7 md:grid-cols-[1fr_1.15fr] md:items-end" delay={220}>
-          <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em]">
-            <ArrowDownRight aria-hidden="true" className="size-4 text-primary" />
-            Scroll to explore
-          </div>
-          <div>
-            <p className="max-w-xl text-lg leading-8 text-muted-foreground md:text-xl">
-              Ecosystem builder and strategy consultant engineering the operational backbone for ventures, institutions, and ideas built to scale.
-            </p>
-            <Button asChild className="mt-7">
-              <Link to="/work">Explore selected work <ArrowRight aria-hidden="true" /></Link>
-            </Button>
-          </div>
-        </Reveal>
+      <section className="home-hero partnership-gradient text-footer-foreground">
+        <div className="site-container home-hero-layout">
+          <Reveal className="relative z-10 flex items-center justify-between">
+            <p className="hero-eyebrow">Hello, I’m Amin.</p>
+            <p className="hidden text-xs text-footer-muted sm:block">Nairobi / Global</p>
+          </Reveal>
+
+          <Reveal variant="clip" className="relative z-10 py-10 md:py-14" delay={100}>
+            <h1 className="display-heading home-hero-title">
+              I build the<br />
+              <span className="text-primary italic">systems</span> that<br />
+              make ideas scale.
+            </h1>
+          </Reveal>
+
+          <Reveal variant="scale" className="home-hero-portrait" delay={180}>
+            <div className="portrait-halo" aria-hidden="true" />
+            <img
+              src={profileImage}
+              alt="Amin Hassan Hussein"
+              width={768}
+              height={768}
+              fetchPriority="high"
+              className="relative z-10 h-full w-full object-contain object-bottom"
+            />
+          </Reveal>
+
+          <Reveal className="home-hero-footer" delay={260}>
+            <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em]">
+              <ArrowDownRight aria-hidden="true" className="size-4 text-primary" />
+              Scroll to explore
+            </div>
+            <div className="relative z-20 max-w-xl">
+              <p className="text-base leading-7 text-footer-muted md:text-lg">
+                Ecosystem builder and strategy consultant engineering the operational backbone for ventures, institutions, and ideas built to scale.
+              </p>
+              <Button asChild className="mt-6">
+                <Link to="/work">Explore selected work <ArrowRight aria-hidden="true" /></Link>
+              </Button>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <section className="bg-paper py-20 md:py-28">
