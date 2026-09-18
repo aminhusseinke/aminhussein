@@ -201,6 +201,105 @@
   &:hover { opacity: 0.65; }
 }
 
+@utility social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-footer-foreground);
+  font-size: 0.8125rem;
+  transition: color 500ms cubic-bezier(.19, 1, .22, 1), transform 500ms cubic-bezier(.19, 1, .22, 1);
+  &:hover { color: var(--color-footer-muted); transform: translateY(-2px); }
+}
+
+@utility home-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(88svh - 5rem);
+  @media (min-width: 48rem) { min-height: calc(88svh - 6rem); }
+}
+
+@utility home-hero-layout {
+  position: relative;
+  display: grid;
+  min-height: inherit;
+  grid-template-rows: auto auto auto 1fr;
+  padding-block: 2rem;
+  @media (min-width: 48rem) {
+    grid-template-rows: auto 1fr auto;
+    padding-block: 2.5rem;
+  }
+}
+
+@utility home-hero-title {
+  max-width: 12ch;
+  font-size: 3.25rem;
+  line-height: .92;
+  text-wrap: balance;
+  @media (min-width: 40rem) { font-size: 4.5rem; }
+  @media (min-width: 48rem) { max-width: 10ch; font-size: 6rem; }
+  @media (min-width: 64rem) { font-size: 7.5rem; }
+}
+
+@utility hero-eyebrow {
+  color: var(--color-footer-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 2.5rem;
+    height: 1px;
+    margin-left: .75rem;
+    vertical-align: middle;
+    background: var(--color-primary);
+  }
+}
+
+@utility home-hero-portrait {
+  position: relative;
+  z-index: 5;
+  align-self: end;
+  justify-self: center;
+  width: min(88vw, 31rem);
+  height: 21rem;
+  margin-top: -1.5rem;
+  @media (min-width: 48rem) {
+    position: absolute;
+    right: -1rem;
+    bottom: 0;
+    width: min(48vw, 35rem);
+    height: 86%;
+    margin-top: 0;
+  }
+}
+
+@utility portrait-halo {
+  position: absolute;
+  z-index: 0;
+  right: 8%;
+  bottom: 8%;
+  width: 80%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in oklab, var(--emerald-soft) 34%, transparent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--emerald) 34%, transparent);
+  box-shadow: 0 0 90px color-mix(in oklab, var(--emerald) 24%, transparent);
+  animation: portrait-breathe 8s ease-in-out infinite alternate;
+}
+
+@utility home-hero-footer {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+  border-top: 1px solid var(--color-footer-line);
+  padding-top: 1.5rem;
+  @media (min-width: 48rem) {
+    grid-template-columns: 1fr minmax(20rem, .78fr);
+  }
+}
+
 @utility image-reveal {
   position: relative;
   overflow: hidden;
@@ -297,6 +396,11 @@
 @keyframes reveal-clip {
   from { clip-path: inset(0 0 100% 0); transform: translateY(.5rem); }
   to { clip-path: inset(0 0 0 0); transform: translateY(0); }
+}
+
+@keyframes portrait-breathe {
+  from { transform: scale(.98); opacity: .58; }
+  to { transform: scale(1.03); opacity: .88; }
 }
 
 @media (prefers-reduced-motion: reduce) {
