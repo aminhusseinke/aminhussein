@@ -141,8 +141,11 @@ function SpeakingPage() {
                   <p className="text-sm text-muted-foreground">{item.role}</p>
                   <p className="mt-2 max-w-md text-sm leading-6 text-muted-foreground">{item.copy}</p>
                 </div>
-                <span className="text-sm text-muted-foreground">{item.location}</span>
-                <span className="whitespace-nowrap text-sm font-semibold">{item.date}</span>
+                <div className="mt-1 flex items-center gap-2 sm:contents">
+                  <span className="text-sm text-muted-foreground">{item.location}</span>
+                  <span className="text-xs text-muted-foreground sm:hidden" aria-hidden="true">•</span>
+                  <span className="whitespace-nowrap text-sm font-semibold">{item.date}</span>
+                </div>
               </div>
             ))}
           </div>

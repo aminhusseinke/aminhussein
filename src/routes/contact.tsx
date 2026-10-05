@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check, Copy, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
-import { socialLinks } from "@/components/site-shell";
+import { socialLinks } from "@/lib/social-links";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
 export const Route = createFileRoute("/contact")({

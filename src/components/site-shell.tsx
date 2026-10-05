@@ -1,18 +1,14 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, Linkedin, Mail, MapPin, Music2 } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { MobileNav } from "@/components/mobile-nav";
+import { socialLinks } from "@/lib/social-links";
 
 const links = [
   { to: "/" as const, label: "Home" },
   { to: "/work" as const, label: "Work" },
   { to: "/speaking" as const, label: "Speaking" },
-];
-
-export const socialLinks = [
-  { href: "https://www.linkedin.com/in/hassan-amin-hussein-", label: "LinkedIn", icon: Linkedin },
-  { href: "https://www.instagram.com/aminhussei_n", label: "Instagram", icon: Instagram },
-  { href: "https://www.tiktok.com/@aminhussei_n", label: "TikTok", icon: Music2 },
 ];
 
 export function SiteShell({ children }: { children: ReactNode }) {
@@ -28,8 +24,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
               <path d="M2 16 C 30 32, 55 34, 78 26 C 110 14, 150 4, 196 2" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
             </svg>
           </Link>
-          <div className="flex items-center gap-1 sm:gap-4">
-            <nav aria-label="Main navigation" className="flex items-center gap-1 sm:gap-3">
+          <div className="flex items-center gap-2 md:gap-4">
+            <nav aria-label="Main navigation" className="hidden items-center gap-1 md:flex md:gap-3">
               {links.map((link) => {
                 const active = link.to === "/" ? pathname === "/" : pathname.startsWith(link.to);
                 return (
@@ -43,12 +39,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 );
               })}
             </nav>
-            <Button asChild size="sm" className="ml-1 shrink-0 sm:ml-0">
+            <Button asChild size="sm" className="shrink-0">
               <Link to="/contact" aria-label="Contact Amin">
                 <Mail aria-hidden="true" className="size-3.5" />
                 <span className="hidden sm:inline">Contact</span>
               </Link>
             </Button>
+            <MobileNav links={links} pathname={pathname} />
           </div>
         </div>
       </header>
