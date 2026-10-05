@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Mail, Menu, X } from "lucide-react";
+import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
 import { socialLinks } from "@/lib/social-links";
 
-type NavLink = { to: "/" | "/work" | "/speaking"; label: string };
+type NavLink = { to: "/" | "/work" | "/speaking" | "/contact"; label: string };
 
 export function MobileNav({ links, pathname }: { links: NavLink[]; pathname: string }) {
+  const gridLinks: NavLink[] = [...links, { to: "/contact", label: "Contact" }];
   const [open, setOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -62,32 +63,29 @@ export function MobileNav({ links, pathname }: { links: NavLink[]; pathname: str
           </button>
         </div>
 
-        <nav aria-label="Main navigation" className="mobile-nav-links site-container">
-          {links.map((link, index) => {
+        <nav aria-label="Main navigation" className="mobile-nav-links-grid site-container">
+          {gridLinks.map((link, index) => {
             const active = link.to === "/" ? pathname === "/" : pathname.startsWith(link.to);
             return (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`mobile-nav-link ${active ? "text-primary" : ""}`}
+                className={`mobile-nav-link-card ${active ? "is-active" : ""}`}
                 style={{ transitionDelay: open ? `${120 + index * 70}ms` : "0ms" }}
               >
-                {link.label}
+                <span className="mobile-nav-link-index">0{index + 1}</span>
+                <span className="mobile-nav-link-label">
+                  {link.label}
+                  <ArrowUpRight aria-hidden="true" className="mobile-nav-link-arrow size-5" />
+                </span>
               </Link>
             );
           })}
-          <Link
-            to="/contact"
-            className="mobile-nav-link text-primary"
-            style={{ transitionDelay: open ? `${120 + links.length * 70}ms` : "0ms" }}
-          >
-            Contact
-          </Link>
         </nav>
 
         <div
           className="mobile-nav-footer site-container"
-          style={{ transitionDelay: open ? `${120 + (links.length + 1) * 70}ms` : "0ms" }}
+          style={{ transitionDelay: open ? `${120 + gridLinks.length * 70}ms` : "0ms" }}
         >
           <a href="mailto:hh.aminhussein@gmail.com" className="flex items-center gap-2 text-sm text-footer-muted">
             <Mail aria-hidden="true" className="size-4" />

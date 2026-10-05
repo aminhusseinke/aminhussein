@@ -178,23 +178,54 @@
   @media (min-width: 48rem) { display: none; }
 }
 
-@utility mobile-nav-links {
-  display: flex;
+@utility mobile-nav-links-grid {
+  display: grid;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.25rem;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  gap: 0.85rem;
   padding-block: 2rem;
 }
 
-@utility mobile-nav-link {
-  font-family: var(--font-display);
-  font-size: 2.75rem;
-  line-height: 1.25;
-  padding-block: 0.5rem;
+@utility mobile-nav-link-card {
+  position: relative;
+  display: flex;
+  min-height: 7.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in oklab, var(--footer-line) 70%, transparent);
+  padding: 1.1rem 1.1rem 1.25rem;
+  color: var(--color-footer-foreground);
   opacity: 0;
   transform: translateY(1rem);
-  transition: opacity 600ms var(--ease-premium), transform 600ms var(--ease-premium), color 320ms var(--ease-premium);
+  transition: opacity 600ms var(--ease-premium), transform 600ms var(--ease-premium), border-color 320ms var(--ease-premium), background-color 320ms var(--ease-premium);
+}
+
+@utility mobile-nav-link-index {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-footer-muted);
+}
+
+@utility mobile-nav-link-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+@utility mobile-nav-link-arrow {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 320ms var(--ease-premium), transform 320ms var(--ease-premium);
 }
 
 @utility mobile-nav-footer {
@@ -528,10 +559,22 @@
   visibility: visible;
   transition: opacity 500ms var(--ease-premium);
 }
-.mobile-nav-overlay.is-open .mobile-nav-link,
+.mobile-nav-overlay.is-open .mobile-nav-link-card,
 .mobile-nav-overlay.is-open .mobile-nav-footer {
   opacity: 1;
   transform: translateY(0);
+}
+.mobile-nav-link-card:hover,
+.mobile-nav-link-card:active,
+.mobile-nav-link-card.is-active {
+  border-color: color-mix(in oklab, var(--primary) 55%, transparent);
+  background-color: color-mix(in oklab, var(--primary) 12%, transparent);
+}
+.mobile-nav-link-card:hover .mobile-nav-link-arrow,
+.mobile-nav-link-card:active .mobile-nav-link-arrow,
+.mobile-nav-link-card.is-active .mobile-nav-link-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .wave-emoji {
