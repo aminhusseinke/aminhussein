@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Playfair Display", serif;
+  --font-sans: "Libre Franklin", sans-serif;
+  --font-display: "Libre Baskerville", serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -41,6 +41,7 @@
 }
 
 :root {
+  --ease-premium: cubic-bezier(.16, 1, .3, 1);
   --radius: 0.75rem;
   --background: oklch(0.995 0.002 75);
   --foreground: oklch(0.145 0.008 70);
@@ -99,16 +100,35 @@
   backdrop-filter: blur(16px);
 }
 
-@utility brand-mark {
-  display: grid;
-  width: 2rem;
-  height: 2rem;
-  place-items: center;
-  border-radius: 999px;
-  background: var(--color-foreground);
-  color: var(--color-background);
+@utility brand-wordmark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+@utility brand-wordmark-text {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--color-foreground);
+  line-height: 1;
+  white-space: nowrap;
+  @media (min-width: 40rem) { font-size: 1.45rem; }
+}
+
+@utility brand-wordmark-swoosh {
+  position: absolute;
+  z-index: 0;
+  left: -4%;
+  bottom: -0.4rem;
+  width: 108%;
+  height: 1.15rem;
+  color: var(--color-primary);
+  pointer-events: none;
+  transition: transform 500ms var(--ease-premium);
 }
 
 @utility nav-link {
@@ -117,7 +137,7 @@
   color: var(--color-muted-foreground);
   font-size: 0.75rem;
   font-weight: 600;
-  transition: color 180ms ease;
+  transition: color 320ms var(--ease-premium);
   &:hover { color: var(--color-foreground); }
   @media (min-width: 40rem) { padding-inline: 0.75rem; font-size: 0.8125rem; }
 }
@@ -149,8 +169,11 @@
 
 @utility display-heading {
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 0.98;
+  font-weight: 400;
+  /* !important: Tailwind's text-5xl/6xl/8xl utilities each bundle their own
+     line-height (1, hard-coded) alongside font-size — without this, that
+     wins the cascade tie and crops Libre Baskerville's descenders (g/y/q). */
+  line-height: 1.15 !important;
   letter-spacing: 0;
 }
 
@@ -181,7 +204,7 @@
     pointer-events: none;
     background: linear-gradient(112deg, transparent 28%, color-mix(in oklab, var(--background) 8%, transparent) 48%, transparent 67%);
     transform: translateX(-110%);
-    transition: transform 1.6s cubic-bezier(.19, 1, .22, 1);
+    transition: transform 2.2s var(--ease-premium);
   }
   &:hover::after { transform: translateX(110%); }
 }
@@ -197,7 +220,7 @@
 @utility footer-link {
   color: var(--color-footer-foreground);
   font-size: 0.875rem;
-  transition: opacity 180ms ease;
+  transition: opacity 380ms var(--ease-premium);
   &:hover { opacity: 0.65; }
 }
 
@@ -207,7 +230,7 @@
   gap: 0.45rem;
   color: var(--color-footer-foreground);
   font-size: 0.8125rem;
-  transition: color 500ms cubic-bezier(.19, 1, .22, 1), transform 500ms cubic-bezier(.19, 1, .22, 1);
+  transition: color 600ms var(--ease-premium), transform 600ms var(--ease-premium);
   &:hover { color: var(--color-footer-muted); transform: translateY(-2px); }
 }
 
@@ -231,13 +254,13 @@
 }
 
 @utility home-hero-title {
-  max-width: 12ch;
-  font-size: 3.25rem;
+  max-width: 18ch;
+  font-size: 2.5rem;
   line-height: .92;
   text-wrap: balance;
-  @media (min-width: 40rem) { font-size: 4.5rem; }
-  @media (min-width: 48rem) { max-width: 10ch; font-size: 6rem; }
-  @media (min-width: 64rem) { font-size: 7.5rem; }
+  @media (min-width: 40rem) { font-size: 3.25rem; }
+  @media (min-width: 48rem) { max-width: 20ch; font-size: 4.25rem; }
+  @media (min-width: 64rem) { font-size: 5.25rem; }
 }
 
 @utility hero-eyebrow {
@@ -273,20 +296,6 @@
   }
 }
 
-@utility portrait-halo {
-  position: absolute;
-  z-index: 0;
-  right: 2%;
-  bottom: 12%;
-  width: 96%;
-  aspect-ratio: 1;
-  border: 1px solid color-mix(in oklab, var(--emerald-soft) 34%, transparent);
-  border-radius: 999px;
-  background: color-mix(in oklab, var(--emerald) 34%, transparent);
-  box-shadow: 0 0 90px color-mix(in oklab, var(--emerald) 24%, transparent);
-  animation: portrait-breathe 8s ease-in-out infinite alternate;
-}
-
 @utility home-hero-footer {
   position: relative;
   z-index: 20;
@@ -300,11 +309,69 @@
   }
 }
 
+@utility contact-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 28rem;
+  @media (min-width: 48rem) { min-height: 34rem; }
+}
+
+@utility contact-hero-layout {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  min-height: inherit;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+  padding-block: 3rem;
+}
+
+@utility contact-icon-badge {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--primary) 12%, transparent);
+  color: var(--color-primary);
+}
+
+@utility contact-social-icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted-foreground);
+  transition: color 320ms var(--ease-premium), border-color 320ms var(--ease-premium), transform 320ms var(--ease-premium);
+  &:hover {
+    color: var(--color-primary);
+    border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+    transform: translateY(-2px);
+  }
+}
+
+@utility photo-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 32rem;
+  @media (min-width: 48rem) { min-height: 40rem; }
+}
+
+@utility photo-hero-scrim {
+  background:
+    linear-gradient(125deg, color-mix(in oklab, var(--emerald) 34%, transparent) 0%, transparent 55%),
+    linear-gradient(180deg, color-mix(in oklab, var(--ink) 86%, transparent) 0%, color-mix(in oklab, var(--ink) 52%, transparent) 46%, color-mix(in oklab, var(--ink) 90%, transparent) 100%);
+}
+
 @utility image-reveal {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
-  & img { transition: transform 1200ms cubic-bezier(.19, 1, .22, 1); }
+  & img { transition: transform 1800ms var(--ease-premium); }
   &:hover img { transform: scale(1.018); }
 }
 
@@ -316,7 +383,7 @@
     pointer-events: none;
     background: linear-gradient(145deg, color-mix(in oklab, var(--emerald) 28%, transparent), transparent 45%, color-mix(in oklab, var(--ink) 18%, transparent));
     opacity: .35;
-    transition: opacity 1200ms cubic-bezier(.19, 1, .22, 1);
+    transition: opacity 1600ms var(--ease-premium);
   }
   &:hover::after { opacity: .72; }
 }
@@ -335,20 +402,96 @@
   --reveal-delay: 0ms;
   opacity: 1;
   transition-property: opacity, transform, filter, clip-path;
-  transition-duration: 1600ms;
+  transition-duration: 2200ms;
   transition-delay: var(--reveal-delay);
-  transition-timing-function: cubic-bezier(.19, 1, .22, 1);
+  transition-timing-function: var(--ease-premium);
+}
+/* will-change only while the one-shot entrance animation is pending — left on
+   permanently, it forces a composited layer whose bounds are sometimes based
+   on the line-height box rather than full glyph ink, clipping descenders
+   (g/y/q) on settled headings. */
+.reveal:not(.is-visible) {
   will-change: opacity, transform;
 }
 
 .reveal-up, .reveal-scale, .reveal-clip { transform: none; filter: none; clip-path: none; }
-.reveal.is-visible { animation: reveal-up 1600ms cubic-bezier(.19, 1, .22, 1) var(--reveal-delay) both; }
+.reveal.is-visible { animation: reveal-up 2200ms var(--ease-premium) var(--reveal-delay) both; }
 .reveal-scale.is-visible { animation-name: reveal-scale; }
 .reveal-clip.is-visible { animation-name: reveal-clip; }
 .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); clip-path: inset(0 0 0 0); }
 
-.route-enter { animation: route-enter 1200ms cubic-bezier(.19, 1, .22, 1) both; }
-.editorial-card { transition: transform 900ms cubic-bezier(.19, 1, .22, 1), border-color 600ms ease, box-shadow 900ms ease; }
+.route-enter { animation: route-enter 1400ms cubic-bezier(.16, 1, .3, 1) both; }
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.logo-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: clamp(3rem, 6vw, 5rem);
+  animation: logo-marquee-scroll 42s linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track { animation-play-state: paused; }
+.logo-marquee-item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+}
+.logo-marquee-item img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform 500ms var(--ease-premium);
+}
+.logo-marquee-item:hover img { transform: scale(1.06); }
+.logo-marquee-item img.logo-marquee-invert { filter: invert(1); }
+.logo-marquee-placeholder {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-foreground);
+  opacity: 0.8;
+  white-space: nowrap;
+  transition: opacity 500ms var(--ease-premium), transform 500ms var(--ease-premium);
+}
+.logo-marquee-item:hover .logo-marquee-placeholder { opacity: 1; transform: scale(1.06); }
+.brand-wordmark:hover .brand-wordmark-swoosh { transform: translateY(-2px); }
+
+.wave-emoji {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  font-size: 3rem;
+  vertical-align: middle;
+  margin-left: 0.15em;
+  animation: wave 2.6s ease-in-out 1;
+  animation-delay: 900ms;
+  cursor: default;
+}
+.hero-eyebrow:hover .wave-emoji { animation: wave 2.6s ease-in-out 1; animation-delay: 0ms; }
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  12% { transform: rotate(16deg); }
+  24% { transform: rotate(-8deg); }
+  36% { transform: rotate(16deg); }
+  48% { transform: rotate(-4deg); }
+  60% { transform: rotate(10deg); }
+  72% { transform: rotate(0deg); }
+}
+
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track { animation: none; }
+}
+.editorial-card { transition: transform 1000ms cubic-bezier(.16, 1, .3, 1), border-color 800ms cubic-bezier(.16, 1, .3, 1), box-shadow 1000ms cubic-bezier(.16, 1, .3, 1); }
 .editorial-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--emerald) 35%, var(--border)); box-shadow: 0 24px 60px -42px color-mix(in oklab, var(--emerald) 55%, transparent); }
 .editorial-card.emerald-panel {
   border-color: color-mix(in oklab, var(--emerald) 52%, transparent);
@@ -356,6 +499,17 @@
   color: var(--color-primary-foreground);
 }
 .emerald-panel.editorial-card:hover { border-color: color-mix(in oklab, var(--emerald-soft) 40%, transparent); box-shadow: 0 34px 80px -45px color-mix(in oklab, var(--emerald) 80%, transparent); }
+.photo-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 2600ms var(--ease-premium), transform 10000ms var(--ease-premium);
+}
+.photo-hero-image.is-active { opacity: 1; transform: scale(1); }
 .nav-link::before {
   content: "";
   position: absolute;
@@ -366,15 +520,15 @@
   background: var(--color-emerald);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 700ms cubic-bezier(.19, 1, .22, 1);
+  transition: transform 900ms var(--ease-premium);
 }
 .nav-link:hover::before { transform: scaleX(1); transform-origin: left; }
 .nav-link-active::before { display: none; }
-.display-heading .text-primary { transition: color 800ms ease, text-shadow 800ms ease; }
+.display-heading .text-primary { transition: color 900ms var(--ease-premium), text-shadow 900ms var(--ease-premium); }
 .display-heading:hover .text-primary { text-shadow: 0 12px 34px color-mix(in oklab, var(--primary) 18%, transparent); }
 
 @keyframes route-enter {
-  from { opacity: 0; transform: translateY(.4rem); filter: blur(2.5px); }
+  from { opacity: 0; transform: translateY(.6rem); filter: blur(4px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
@@ -384,23 +538,18 @@
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(1.1rem); filter: blur(2.5px); }
+  from { opacity: 0; transform: translateY(1.75rem); filter: blur(6px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes reveal-scale {
-  from { opacity: 0; transform: scale(.982); filter: blur(2px); }
+  from { opacity: 0; transform: scale(.96); filter: blur(5px); }
   to { opacity: 1; transform: scale(1); filter: blur(0); }
 }
 
 @keyframes reveal-clip {
-  from { clip-path: inset(0 0 100% 0); transform: translateY(.5rem); }
+  from { clip-path: inset(0 0 100% 0); transform: translateY(.9rem); }
   to { clip-path: inset(0 0 0 0); transform: translateY(0); }
-}
-
-@keyframes portrait-breathe {
-  from { transform: scale(.98); opacity: .58; }
-  to { transform: scale(1.03); opacity: .88; }
 }
 
 @media (prefers-reduced-motion: reduce) {

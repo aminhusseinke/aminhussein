@@ -1,14 +1,15 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Instagram, Linkedin, MapPin, Music2 } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Mail, MapPin, Music2 } from "lucide-react";
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 const links = [
   { to: "/" as const, label: "Home" },
-  { to: "/about" as const, label: "About" },
   { to: "/work" as const, label: "Work" },
+  { to: "/speaking" as const, label: "Speaking" },
 ];
 
-const socialLinks = [
+export const socialLinks = [
   { href: "https://www.linkedin.com/in/hassan-amin-hussein-", label: "LinkedIn", icon: Linkedin },
   { href: "https://www.instagram.com/aminhussei_n", label: "Instagram", icon: Instagram },
   { href: "https://www.tiktok.com/@aminhussei_n", label: "TikTok", icon: Music2 },
@@ -21,24 +22,34 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-background text-foreground">
       <header className="site-header">
         <div className="site-container flex h-20 items-center justify-between md:h-24">
-          <Link to="/" className="flex items-center gap-3" aria-label="Amin, home">
-            <span className="brand-mark">A</span>
-            <span className="text-xs font-semibold uppercase tracking-[0.16em]">Amin</span>
+          <Link to="/" className="brand-wordmark" aria-label="Amin Hussein, home">
+            <span className="brand-wordmark-text">Amin Hussein</span>
+            <svg className="brand-wordmark-swoosh" viewBox="0 0 200 40" fill="none" aria-hidden="true">
+              <path d="M2 16 C 30 32, 55 34, 78 26 C 110 14, 150 4, 196 2" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
+            </svg>
           </Link>
-          <nav aria-label="Main navigation" className="flex items-center gap-1 sm:gap-3">
-            {links.map((link) => {
-              const active = link.to === "/" ? pathname === "/" : pathname.startsWith(link.to);
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`nav-link ${active ? "nav-link-active" : ""}`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+          <div className="flex items-center gap-1 sm:gap-4">
+            <nav aria-label="Main navigation" className="flex items-center gap-1 sm:gap-3">
+              {links.map((link) => {
+                const active = link.to === "/" ? pathname === "/" : pathname.startsWith(link.to);
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`nav-link ${active ? "nav-link-active" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            <Button asChild size="sm" className="ml-1 shrink-0 sm:ml-0">
+              <Link to="/contact" aria-label="Contact Amin">
+                <Mail aria-hidden="true" className="size-3.5" />
+                <span className="hidden sm:inline">Contact</span>
+              </Link>
+            </Button>
+          </div>
         </div>
       </header>
       <main key={pathname} className="route-enter">{children}</main>
@@ -79,7 +90,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             </div>
           </div>
           <div className="mt-14 flex items-end justify-between border-t border-footer-line pt-7">
-            <p className="font-display text-3xl sm:text-4xl">Build what endures.</p>
+            <p className="font-display text-3xl sm:text-4xl">Own your story.</p>
             <ArrowUpRight aria-hidden="true" className="hidden size-6 sm:block" />
           </div>
         </div>
