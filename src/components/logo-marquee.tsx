@@ -33,7 +33,7 @@ export function LogoMarquee({ items }: { items: LogoMarqueeItem[] }) {
               <img
                 src={item.src}
                 alt={item.name}
-                loading="lazy"
+                loading="eager"
                 className={item.invert ? "logo-marquee-invert" : undefined}
               />
             ) : (
