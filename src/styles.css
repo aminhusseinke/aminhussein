@@ -532,7 +532,7 @@
   align-items: center;
   width: max-content;
   gap: clamp(3rem, 6vw, 5rem);
-  animation: logo-marquee-scroll 42s linear infinite;
+  animation: logo-marquee-scroll 22s linear infinite;
 }
 @media (hover: hover) and (pointer: fine) {
   .logo-marquee:hover .logo-marquee-track { animation-play-state: paused; }
@@ -700,8 +700,8 @@
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; filter: none; clip-path: none; }
-  /* Deliberate exception: this is a slow (42s), purely lateral, low-contrast
+  /* Deliberate exception: this is a slow, purely lateral, low-contrast
      decorative strip — kept moving even under reduced-motion rather than
      frozen, unlike every other animation on the site. */
-  .logo-marquee-track { animation-duration: 42s !important; }
+  .logo-marquee-track { animation-duration: 22s !important; }
 }
