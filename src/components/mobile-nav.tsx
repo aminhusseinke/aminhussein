@@ -72,11 +72,11 @@ export function MobileNav({ links, pathname }: { links: NavLink[]; pathname: str
               className={`mobile-nav-link-card ${active ? "is-active" : ""}`}
               style={{ transitionDelay: open ? `${120 + index * 70}ms` : "0ms" }}
             >
-              <span className="mobile-nav-link-index">0{index + 1}</span>
-              <span className="mobile-nav-link-label">
-                {link.label}
+              <span className="mobile-nav-link-top">
+                <span className="mobile-nav-link-index">0{index + 1}</span>
                 <ArrowUpRight aria-hidden="true" className="mobile-nav-link-arrow size-5" />
               </span>
+              <span className="mobile-nav-link-label">{link.label}</span>
             </Link>
           );
         })}
