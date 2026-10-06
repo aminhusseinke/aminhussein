@@ -524,15 +524,23 @@
 .logo-marquee {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 4%, black 96%, transparent);
+  @media (min-width: 48rem) {
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
 }
 .logo-marquee-track {
   display: flex;
   align-items: center;
   width: max-content;
-  gap: clamp(3rem, 6vw, 5rem);
-  animation: logo-marquee-scroll 22s linear infinite;
+  gap: 1.5rem;
+  animation: logo-marquee-scroll 11s linear infinite;
+  @media (min-width: 48rem) {
+    gap: clamp(3rem, 6vw, 5rem);
+    animation-duration: 22s;
+  }
 }
 @media (hover: hover) and (pointer: fine) {
   .logo-marquee:hover .logo-marquee-track { animation-play-state: paused; }
@@ -542,7 +550,8 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  height: 2.75rem;
+  height: 2.1rem;
+  @media (min-width: 48rem) { height: 2.75rem; }
 }
 .logo-marquee-item img {
   height: 100%;
@@ -703,5 +712,8 @@
   /* Deliberate exception: this is a slow, purely lateral, low-contrast
      decorative strip — kept moving even under reduced-motion rather than
      frozen, unlike every other animation on the site. */
-  .logo-marquee-track { animation-duration: 22s !important; }
+  .logo-marquee-track { animation-duration: 11s !important; }
+  @media (min-width: 48rem) {
+    .logo-marquee-track { animation-duration: 22s !important; }
+  }
 }
