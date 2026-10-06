@@ -67,9 +67,9 @@ const formats = [
 
 const engagements = [
   { event: "Good International School STEM Career Fair Programme", role: "Speaker", location: "Nairobi, Kenya", date: "September 2026", copy: "A STEM-focused career fair helping primary school students explore pathways into science, technology, and entrepreneurship." },
-  { event: "Crevia Summit", role: "Host", location: "Nairobi, Kenya", date: "June 2026", copy: "A flagship regional convening on personal branding and career growth, produced by Crevia for East Africa's young professionals." },
-  { event: "AI Summit", role: "Host", location: "Nairobi, Kenya", date: "August 2025", copy: "Themed \"Building AI for Impact\"—exploring how AI can solve the real challenges Africa faces today." },
-  { event: "Freelancers Summit", role: "Host & panel moderator", location: "Nairobi, Kenya", date: "October 2024", copy: "A summit for Kenya's freelance and independent-work community on building sustainable income outside traditional employment." },
+  { event: "Crevia Summit 2026", role: "Host", location: "Nairobi, Kenya", date: "June 2026", copy: "A flagship regional convening on personal branding and career growth, produced by Crevia for East Africa's young professionals." },
+  { event: "AI Summit 2025", role: "Host", location: "Nairobi, Kenya", date: "August 2025", copy: "Themed \"Building AI for Impact\"—exploring how AI can solve the real challenges Africa faces today." },
+  { event: "Freelancers Summit 2024", role: "Host & panel moderator", location: "Nairobi, Kenya", date: "October 2024", copy: "A summit for Kenya's freelance and independent-work community on building sustainable income outside traditional employment." },
 ];
 
 function SpeakingPage() {
