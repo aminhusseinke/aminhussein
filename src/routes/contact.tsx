@@ -84,7 +84,7 @@ function ContactPage() {
               <h3 className="font-display text-3xl sm:text-4xl">Send a message</h3>
               <p className="mt-4 max-w-md leading-7 text-muted-foreground">Email me directly and I'll aim to respond within 1–2 business days.</p>
               <Button size="lg" className="mt-9 w-full sm:w-auto" onClick={handleCopy}>
-                {CONTACT_EMAIL}
+                {copied ? "Copied" : "Copy email address"}
                 {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
               </Button>
               <p className="mt-3 text-xs text-muted-foreground" aria-live="polite">
