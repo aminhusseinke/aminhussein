@@ -7,7 +7,7 @@ import { socialLinks } from "@/lib/social-links";
 type NavLink = { to: "/" | "/work" | "/speaking" | "/contact"; label: string };
 
 export function MobileNav({ links, pathname }: { links: NavLink[]; pathname: string }) {
-  const gridLinks: NavLink[] = [...links, { to: "/contact", label: "Contact" }];
+  const gridLinks: NavLink[] = [...links, { to: "/contact", label: "Let's talk" }];
   const [open, setOpen] = useState(false);
   // The overlay is portaled to <body> (below) so it escapes the header's own
   // position:relative/z-index:20 stacking context — otherwise page content
