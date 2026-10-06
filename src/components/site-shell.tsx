@@ -42,7 +42,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Button asChild size="sm" className="hidden shrink-0 md:inline-flex">
               <Link to="/contact" aria-label="Contact Amin">
                 <Mail aria-hidden="true" className="size-3.5" />
-                <span>Contact</span>
+                <span>Let's talk</span>
               </Link>
             </Button>
             <MobileNav links={links} pathname={pathname} />
