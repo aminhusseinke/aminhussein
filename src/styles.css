@@ -716,4 +716,8 @@
   @media (min-width: 48rem) {
     .logo-marquee-track { animation-duration: 22s !important; }
   }
+  /* Same exception: a slow crossfade between hero background photos, not a
+     fast/parallax motion — otherwise the images still rotate (JS override
+     above) but snap instantly instead of crossfading. */
+  .photo-hero-image { transition-duration: 2600ms, 10000ms !important; }
 }

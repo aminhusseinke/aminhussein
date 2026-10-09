@@ -15,8 +15,11 @@ export function HeroSlideshow({
   const [active, setActive] = useState(0);
 
   useEffect(() => {
+    // Deliberate exception to prefers-reduced-motion: this is a slow (7.5s),
+    // pure crossfade between background photos, not a fast/parallax motion —
+    // frozen otherwise on any device with Reduce Motion enabled, showing
+    // only the first image forever instead of rotating like everywhere else.
     if (images.length < 2) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => {
       setActive((current) => (current + 1) % images.length);
     }, interval);
