@@ -40,7 +40,7 @@ function ContactPage() {
         <div className="site-container contact-hero-layout">
           <Reveal><p className="hero-eyebrow">Contact</p></Reveal>
           <Reveal variant="clip" delay={180}>
-            <h1 className="display-heading text-balance text-5xl sm:text-7xl md:text-8xl">Let's write what's <span className="text-primary italic">next.</span></h1>
+            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Let's write what's <span className="text-primary italic">next.</span></h1>
           </Reveal>
           <Reveal delay={380}>
             <p className="max-w-xl text-lg leading-8 text-footer-muted">Whether you're exploring a partnership, have a project in mind, or just want to say hello—I'd love to hear from you.</p>
@@ -52,7 +52,7 @@ function ContactPage() {
         <div className="grid gap-14 md:grid-cols-[0.9fr_1.1fr] md:items-start">
           <Reveal>
             <p className="eyebrow mb-6">Get in touch</p>
-            <h2 className="display-heading mb-10 text-5xl sm:text-6xl">Find me.</h2>
+            <h2 className="display-heading mb-10 text-4xl sm:text-6xl">Find me.</h2>
 
             <div className="flex items-center gap-4">
               <span className="contact-icon-badge"><Mail aria-hidden="true" className="size-5" /></span>

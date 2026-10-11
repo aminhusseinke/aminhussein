@@ -17,15 +17,15 @@ import islamicallyCorrectLogo from "@/assets/islamically-correct-podcast-logo.jp
 // Crevia has no logo file yet, so it stays a text mark — add a `src` once
 // one is available.
 const companyLogos = [
-  { name: "Suluhu Studio", src: suluhuLogo, invert: true },
+  { name: "Suluhu Studio", src: suluhuLogo, width: 3316, height: 755, invert: true },
   { name: "Crevia", placeholderSize: "1.35rem" },
-  { name: "Nairobi Garage", src: nairobiGarageLogo },
-  { name: "iHub Nairobi", src: ihubLogo, invert: true },
-  { name: "Strathmore University", src: strathmoreLogo },
-  { name: "Heartspark Consultancy", src: heartsparkLogo, imageHeight: "3.2rem" },
-  { name: "American Spaces", src: americanSpacesLogo, imageHeight: "4.2rem" },
-  { name: "Hackhouse", src: hackhouseLogo, imageHeight: "1.9rem" },
-  { name: "Islamically Correct Podcast", src: islamicallyCorrectLogo, imageHeight: "3.9rem" },
+  { name: "Nairobi Garage", src: nairobiGarageLogo, width: 2048, height: 512 },
+  { name: "iHub Nairobi", src: ihubLogo, width: 900, height: 289, invert: true },
+  { name: "Strathmore University", src: strathmoreLogo, width: 600, height: 234 },
+  { name: "Heartspark Consultancy", src: heartsparkLogo, width: 192, height: 192, imageHeight: "3.2rem" },
+  { name: "American Spaces", src: americanSpacesLogo, width: 272, height: 354, imageHeight: "4.2rem" },
+  { name: "Hackhouse", src: hackhouseLogo, width: 1625, height: 226, imageHeight: "1.9rem" },
+  { name: "Islamically Correct Podcast", src: islamicallyCorrectLogo, width: 900, height: 900, imageHeight: "3.9rem" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -103,7 +103,7 @@ function HomePage() {
           <Reveal className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="eyebrow mb-5">North star</p>
-              <h2 className="display-heading text-5xl sm:text-6xl">Mission <span className="text-primary italic">&</span> vision</h2>
+              <h2 className="display-heading text-4xl sm:text-6xl">Mission <span className="text-primary italic">&</span> vision</h2>
             </div>
             <p className="max-w-sm text-sm leading-6 text-muted-foreground">Clear intent creates momentum. Strong strategy makes it repeatable.</p>
           </Reveal>
@@ -112,7 +112,7 @@ function HomePage() {
             <article className="editorial-card emerald-panel flex min-h-80 flex-col justify-between p-7 md:p-10">
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">01 / Mission</span>
               <div>
-                <h3 className="display-heading mb-5 text-4xl sm:text-5xl">Turn your complexity into <span className="text-primary italic">clarity.</span></h3>
+                <h3 className="display-heading mb-5 text-3xl sm:text-5xl">Turn your complexity into <span className="text-primary italic">clarity.</span></h3>
                 <p className="max-w-md leading-7 text-footer-muted">I design the strategy that aligns your people, capital, and execution around the work that matters.</p>
               </div>
             </article>
@@ -121,7 +121,7 @@ function HomePage() {
             <article className="editorial-card flex min-h-80 flex-col justify-between p-7 md:p-10">
               <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">02 / Vision</span>
               <div>
-                <h3 className="display-heading mb-5 text-4xl sm:text-5xl">African brands built to <span className="text-primary italic">endure.</span></h3>
+                <h3 className="display-heading mb-5 text-3xl sm:text-5xl">African brands built to <span className="text-primary italic">endure.</span></h3>
                 <p className="max-w-md leading-7 text-muted-foreground">A future where African entrepreneurs and brands scale with confidence, creative rigor, and strategic independence.</p>
               </div>
             </article>
@@ -136,7 +136,7 @@ function HomePage() {
         </Reveal>
         <Reveal className="md:pl-10" delay={220}>
           <p className="eyebrow mb-6">The practice</p>
-          <h2 className="display-heading text-balance text-5xl sm:text-6xl">Strategy that moves from paper to <span className="text-primary italic">practice.</span></h2>
+          <h2 className="display-heading text-balance text-4xl sm:text-6xl">Strategy that moves from paper to <span className="text-primary italic">practice.</span></h2>
           <p className="mt-7 max-w-lg text-base leading-7 text-muted-foreground">I work at the point where your vision becomes a growth plan—turning early conviction into clear strategy, credible brands, and partnerships built to unlock scale on your terms.</p>
         </Reveal>
       </section>
@@ -146,7 +146,7 @@ function HomePage() {
           <Reveal>
             <div>
               <p className="eyebrow">Track record</p>
-              <h2 className="display-heading mt-5 max-w-md text-4xl sm:text-5xl">I help ambitious teams make the leap from <span className="text-primary italic">possible</span> to proven.</h2>
+              <h2 className="display-heading mt-5 max-w-md text-3xl sm:text-5xl">I help ambitious teams make the leap from <span className="text-primary italic">possible</span> to proven.</h2>
             </div>
           </Reveal>
           <div className="divide-y border-y">
@@ -167,7 +167,7 @@ function HomePage() {
       </section>
 
       <section className="site-container flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-28">
-        <Reveal><h2 className="display-heading max-w-3xl text-5xl sm:text-6xl">The right structure is how your team comes to <span className="emerald-text italic">own its story.</span></h2></Reveal>
+        <Reveal><h2 className="display-heading max-w-3xl text-4xl sm:text-6xl">The right structure is how your team comes to <span className="emerald-text italic">own its story.</span></h2></Reveal>
         <Reveal delay={220}><Button asChild><Link to="/work">See the work <ArrowRight aria-hidden="true" /></Link></Button></Reveal>
       </section>
     </>

@@ -62,7 +62,7 @@ function WorkPage() {
         <div className="site-container absolute inset-x-0 bottom-0 z-10 flex flex-col gap-6 pb-14 md:pb-20">
           <Reveal><p className="hero-eyebrow">Selected work</p></Reveal>
           <Reveal variant="clip" delay={180} className="max-w-4xl">
-            <h1 className="display-heading text-balance text-5xl sm:text-7xl md:text-8xl">Infrastructure for ideas with <span className="text-primary italic">consequence.</span></h1>
+            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Infrastructure for ideas with <span className="text-primary italic">consequence.</span></h1>
           </Reveal>
           <Reveal delay={380}>
             <p className="max-w-xl text-lg leading-8 text-footer-muted">Spaces, programs, and strategy designed to outlast the moment—so your institution can do more of what's next.</p>
@@ -78,7 +78,7 @@ function WorkPage() {
       <section className="site-container pt-20 md:pt-28">
         <Reveal className="mb-12">
           <p className="eyebrow mb-5">Products</p>
-          <h2 className="display-heading text-5xl sm:text-6xl">Things I've <span className="text-primary italic">built.</span></h2>
+          <h2 className="display-heading text-4xl sm:text-6xl">Things I've <span className="text-primary italic">built.</span></h2>
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2">
           {products.map((product, index) =>
@@ -116,7 +116,7 @@ function WorkPage() {
       <section className="site-container pt-20 pb-24 md:pt-28 md:pb-32">
         <Reveal className="mb-12">
           <p className="eyebrow mb-5">How it comes together</p>
-          <h2 className="display-heading text-5xl sm:text-6xl">Where strategy becomes <span className="text-primary italic">structure.</span></h2>
+          <h2 className="display-heading text-4xl sm:text-6xl">Where strategy becomes <span className="text-primary italic">structure.</span></h2>
         </Reveal>
         <div className="space-y-20 md:space-y-28">
           {projects.map((project, index) => (
@@ -126,7 +126,7 @@ function WorkPage() {
             </Reveal>
             <Reveal delay={220} className={`border-t pt-6 md:col-span-4 ${index % 2 ? "md:order-1" : ""}`}>
               <div className="mb-12 flex justify-between text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground"><span>{project.number}</span><span>{project.type}</span></div>
-              <h2 className="display-heading text-4xl sm:text-5xl">{project.title}</h2>
+              <h2 className="display-heading text-3xl sm:text-5xl">{project.title}</h2>
               <p className="mt-5 leading-7 text-muted-foreground">{project.copy}</p>
             </Reveal>
           </article>
@@ -139,7 +139,7 @@ function WorkPage() {
           <Reveal>
             <div>
               <p className="eyebrow">What I've built</p>
-              <h2 className="display-heading mt-5 max-w-md text-4xl sm:text-5xl">Three years, <span className="text-primary italic">zero to one.</span></h2>
+              <h2 className="display-heading mt-5 max-w-md text-3xl sm:text-5xl">Three years, <span className="text-primary italic">zero to one.</span></h2>
             </div>
           </Reveal>
           <div className="divide-y border-y">
@@ -160,7 +160,7 @@ function WorkPage() {
 
       <section className="site-container pb-20 md:pb-28">
         <Reveal variant="scale" className="partnership-gradient flex min-h-96 flex-col justify-between rounded-lg p-8 text-primary-foreground md:flex-row md:items-end md:p-14">
-          <div><p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] opacity-70">Partnerships</p><h2 className="display-heading max-w-3xl text-5xl sm:text-6xl md:text-7xl">Shape the room.<br />Own your outcome.</h2></div>
+          <div><p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] opacity-70">Partnerships</p><h2 className="display-heading max-w-3xl text-4xl sm:text-6xl md:text-7xl">Shape the room.<br />Own your outcome.</h2></div>
           <Button asChild className="mt-10 shrink-0 md:mt-0"><Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link></Button>
         </Reveal>
       </section>

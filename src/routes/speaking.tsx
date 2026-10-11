@@ -80,7 +80,7 @@ function SpeakingPage() {
         <div className="site-container absolute inset-x-0 bottom-0 z-10 flex flex-col gap-6 pb-14 md:pb-20">
           <Reveal><p className="hero-eyebrow">Speaking</p></Reveal>
           <Reveal variant="clip" delay={180} className="max-w-3xl">
-            <h1 className="display-heading text-balance text-5xl sm:text-7xl md:text-8xl">Talks that build <span className="text-primary italic">what lasts.</span></h1>
+            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Talks that build <span className="text-primary italic">what lasts.</span></h1>
           </Reveal>
           <Reveal delay={380}>
             <Button asChild size="lg">
@@ -110,7 +110,7 @@ function SpeakingPage() {
       </section>
 
       <section className="site-container py-20 md:py-28">
-        <Reveal className="mb-12"><p className="eyebrow">Topics</p><h2 className="display-heading mt-5 text-5xl sm:text-6xl">What I speak/moderate <span className="text-primary italic">about.</span></h2></Reveal>
+        <Reveal className="mb-12"><p className="eyebrow">Topics</p><h2 className="display-heading mt-5 text-4xl sm:text-6xl">What I speak/moderate <span className="text-primary italic">about.</span></h2></Reveal>
         <Reveal delay={180}>
           <Accordion type="single" collapsible className="border-t">
             {topics.map((topic, index) => (
@@ -129,7 +129,7 @@ function SpeakingPage() {
         <Reveal className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="eyebrow mb-5">Track record</p>
-            <h2 className="display-heading text-5xl sm:text-6xl">Selected <span className="text-primary italic">engagements.</span></h2>
+            <h2 className="display-heading text-4xl sm:text-6xl">Selected <span className="text-primary italic">engagements.</span></h2>
           </div>
         </Reveal>
         <Reveal delay={160}>
@@ -156,7 +156,7 @@ function SpeakingPage() {
         <Reveal variant="scale" className="partnership-gradient flex min-h-96 flex-col justify-between rounded-lg p-8 text-primary-foreground md:flex-row md:items-end md:p-14">
           <div>
             <p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] opacity-70">Speaking inquiries</p>
-            <h2 className="display-heading max-w-3xl text-5xl sm:text-6xl md:text-7xl">Bring your story<br />into the room.</h2>
+            <h2 className="display-heading max-w-3xl text-4xl sm:text-6xl md:text-7xl">Bring your story<br />into the room.</h2>
           </div>
           <Button asChild className="mt-10 shrink-0 md:mt-0">
             <Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link>

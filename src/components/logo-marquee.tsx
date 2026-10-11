@@ -1,6 +1,17 @@
 export type LogoMarqueeItem = {
   name: string;
   src?: string;
+  // The source file's natural pixel (or SVG viewBox) dimensions. The track's
+  // width is `max-content` and the scroll animation translates by -50% of
+  // that same width, so if an image has no size hint, the browser renders it
+  // at ~0 width until the file finishes downloading, then its real width
+  // lands and the track's total width — and therefore the -50% target —
+  // recalculates mid-animation. On a slow connection, each of the 9 logos
+  // resolving at a different moment shows up as a visible jump. Passing the
+  // real width/height reserves the correct space immediately so there's
+  // nothing left to jump when the image data arrives.
+  width?: number;
+  height?: number;
   // Set when the source file is white/light artwork meant for a dark
   // background — inverts it so it reads on this light-background marquee.
   invert?: boolean;
@@ -33,6 +44,8 @@ export function LogoMarquee({ items }: { items: LogoMarqueeItem[] }) {
               <img
                 src={item.src}
                 alt={item.name}
+                width={item.width}
+                height={item.height}
                 loading="eager"
                 className={item.invert ? "logo-marquee-invert" : undefined}
               />
