@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check, Copy, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
+import { AnimatedHeadline } from "@/components/animated-headline";
+import { Magnetic } from "@/components/magnetic";
 import { socialLinks } from "@/lib/social-links";
 import { CONTACT_EMAIL } from "@/lib/contact";
 
@@ -39,9 +41,14 @@ function ContactPage() {
       <section className="contact-hero partnership-gradient text-footer-foreground">
         <div className="site-container contact-hero-layout">
           <Reveal><p className="hero-eyebrow">Contact</p></Reveal>
-          <Reveal variant="clip" delay={180}>
-            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Let's write what's <span className="text-primary italic">next.</span></h1>
-          </Reveal>
+          <AnimatedHeadline
+            className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl"
+            delay={180}
+            segments={[
+              { text: "Let's write what's " },
+              { text: "next.", className: "text-primary italic" },
+            ]}
+          />
           <Reveal delay={380}>
             <p className="max-w-xl text-lg leading-8 text-footer-muted">Whether you're exploring a partnership, have a project in mind, or just want to say hello—I'd love to hear from you.</p>
           </Reveal>
@@ -83,10 +90,12 @@ function ContactPage() {
             <article className="editorial-card p-8 md:p-12">
               <h3 className="font-display text-3xl sm:text-4xl">Send a message</h3>
               <p className="mt-4 max-w-md leading-7 text-muted-foreground">Email me directly and I'll aim to respond within 1–2 business days.</p>
-              <Button size="lg" className="mt-9 w-full sm:w-auto" onClick={handleCopy}>
-                {copied ? "Copied" : "Copy email address"}
-                {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
-              </Button>
+              <Magnetic className="mt-9 block w-full sm:inline-block sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto" onClick={handleCopy}>
+                  {copied ? "Copied" : "Copy email address"}
+                  {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+                </Button>
+              </Magnetic>
               <p className="mt-3 text-xs text-muted-foreground" aria-live="polite">
                 {copied ? "Copied to clipboard" : "Click to copy the address"}
               </p>

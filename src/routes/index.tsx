@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
+import { AnimatedHeadline } from "@/components/animated-headline";
+import { Magnetic } from "@/components/magnetic";
 import { LogoMarquee } from "@/components/logo-marquee";
 import systemsImage from "@/assets/operational-systems.jpg";
 import profileImage from "@/assets/amin-profile-cutout.png";
@@ -54,12 +56,15 @@ function HomePage() {
             <p className="hidden text-xs text-footer-muted sm:block">Nairobi / Global</p>
           </Reveal>
 
-          <Reveal variant="clip" className="relative z-10 py-10 md:py-14" delay={180}>
-            <h1 className="display-heading home-hero-title">
-              I help brands scale across Africa,<br />
-              <span className="text-primary italic">the right way.</span>
-            </h1>
-          </Reveal>
+          <AnimatedHeadline
+            className="display-heading home-hero-title relative z-10 py-10 md:py-14"
+            delay={180}
+            segments={[
+              { text: "I help brands scale across Africa," },
+              { break: true },
+              { text: "the right way.", className: "text-primary italic" },
+            ]}
+          />
 
           <Reveal variant="scale" className="home-hero-portrait" delay={340}>
             <img
@@ -81,9 +86,11 @@ function HomePage() {
               <p className="text-base leading-7 text-footer-muted md:text-lg">
                 I help founders and brands scale across Africa through strategy, programs, and partnerships—so you own the story, not just survive it.
               </p>
-              <Button asChild className="mt-6">
-                <Link to="/work">Explore selected work <ArrowRight aria-hidden="true" /></Link>
-              </Button>
+              <Magnetic className="mt-6 inline-block">
+                <Button asChild>
+                  <Link to="/work">Explore selected work <ArrowRight aria-hidden="true" /></Link>
+                </Button>
+              </Magnetic>
             </div>
           </Reveal>
         </div>
@@ -168,7 +175,7 @@ function HomePage() {
 
       <section className="site-container flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-end md:py-28">
         <Reveal><h2 className="display-heading max-w-3xl text-4xl sm:text-6xl">The right structure is how your team comes to <span className="emerald-text italic">own its story.</span></h2></Reveal>
-        <Reveal delay={220}><Button asChild><Link to="/work">See the work <ArrowRight aria-hidden="true" /></Link></Button></Reveal>
+        <Reveal delay={220}><Magnetic><Button asChild><Link to="/work">See the work <ArrowRight aria-hidden="true" /></Link></Button></Magnetic></Reveal>
       </section>
     </>
   );

@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
+import { AnimatedHeadline } from "@/components/animated-headline";
+import { Magnetic } from "@/components/magnetic";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import infrastructureImage from "@/assets/strathmore-ai-summit-group.jpg";
 import systemsImage from "@/assets/operational-systems.jpg";
@@ -61,16 +63,23 @@ function WorkPage() {
         <HeroSlideshow images={heroImages} />
         <div className="site-container absolute inset-x-0 bottom-0 z-10 flex flex-col gap-6 pb-14 md:pb-20">
           <Reveal><p className="hero-eyebrow">Selected work</p></Reveal>
-          <Reveal variant="clip" delay={180} className="max-w-4xl">
-            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Infrastructure for ideas with <span className="text-primary italic">consequence.</span></h1>
-          </Reveal>
+          <AnimatedHeadline
+            className="display-heading text-balance max-w-4xl text-4xl sm:text-7xl md:text-8xl"
+            delay={180}
+            segments={[
+              { text: "Infrastructure for ideas with " },
+              { text: "consequence.", className: "text-primary italic" },
+            ]}
+          />
           <Reveal delay={380}>
             <p className="max-w-xl text-lg leading-8 text-footer-muted">Spaces, programs, and strategy designed to outlast the moment—so your institution can do more of what's next.</p>
           </Reveal>
           <Reveal delay={480}>
-            <Button asChild size="lg">
-              <Link to="/contact">Let's talk <ArrowRight aria-hidden="true" /></Link>
-            </Button>
+            <Magnetic>
+              <Button asChild size="lg">
+                <Link to="/contact">Let's talk <ArrowRight aria-hidden="true" /></Link>
+              </Button>
+            </Magnetic>
           </Reveal>
         </div>
       </section>
@@ -161,7 +170,9 @@ function WorkPage() {
       <section className="site-container pb-20 md:pb-28">
         <Reveal variant="scale" className="partnership-gradient flex min-h-96 flex-col justify-between rounded-lg p-8 text-primary-foreground md:flex-row md:items-end md:p-14">
           <div><p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] opacity-70">Partnerships</p><h2 className="display-heading max-w-3xl text-4xl sm:text-6xl md:text-7xl">Shape the room.<br />Own your outcome.</h2></div>
-          <Button asChild className="mt-10 shrink-0 md:mt-0"><Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link></Button>
+          <Magnetic className="mt-10 inline-block shrink-0 md:mt-0">
+            <Button asChild><Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link></Button>
+          </Magnetic>
         </Reveal>
       </section>
     </>

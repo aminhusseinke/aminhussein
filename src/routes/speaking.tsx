@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Mic, Users, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/reveal";
+import { AnimatedHeadline } from "@/components/animated-headline";
+import { Magnetic } from "@/components/magnetic";
 import { HeroSlideshow } from "@/components/hero-slideshow";
 import {
   Accordion,
@@ -79,13 +81,20 @@ function SpeakingPage() {
         <HeroSlideshow images={heroImages} />
         <div className="site-container absolute inset-x-0 bottom-0 z-10 flex flex-col gap-6 pb-14 md:pb-20">
           <Reveal><p className="hero-eyebrow">Speaking</p></Reveal>
-          <Reveal variant="clip" delay={180} className="max-w-3xl">
-            <h1 className="display-heading text-balance text-4xl sm:text-7xl md:text-8xl">Talks that build <span className="text-primary italic">what lasts.</span></h1>
-          </Reveal>
+          <AnimatedHeadline
+            className="display-heading text-balance max-w-3xl text-4xl sm:text-7xl md:text-8xl"
+            delay={180}
+            segments={[
+              { text: "Talks that build " },
+              { text: "what lasts.", className: "text-primary italic" },
+            ]}
+          />
           <Reveal delay={380}>
-            <Button asChild size="lg">
-              <Link to="/contact">Let's talk <ArrowRight aria-hidden="true" /></Link>
-            </Button>
+            <Magnetic>
+              <Button asChild size="lg">
+                <Link to="/contact">Let's talk <ArrowRight aria-hidden="true" /></Link>
+              </Button>
+            </Magnetic>
           </Reveal>
         </div>
       </section>
@@ -158,9 +167,11 @@ function SpeakingPage() {
             <p className="mb-8 text-xs font-semibold uppercase tracking-[0.16em] opacity-70">Speaking inquiries</p>
             <h2 className="display-heading max-w-3xl text-4xl sm:text-6xl md:text-7xl">Bring your story<br />into the room.</h2>
           </div>
-          <Button asChild className="mt-10 shrink-0 md:mt-0">
-            <Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link>
-          </Button>
+          <Magnetic className="mt-10 inline-block shrink-0 md:mt-0">
+            <Button asChild>
+              <Link to="/contact">Start a conversation <ArrowRight aria-hidden="true" /></Link>
+            </Button>
+          </Magnetic>
         </Reveal>
       </section>
     </>
